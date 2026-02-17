@@ -8,9 +8,9 @@ theme = 'ochosiete-theme'
   description = 'Sitio inspirado en Cartas del Frente Ejército Alemán - 1942'
   
   [params.social]
-    instagram = "tu_usuario"
-    twitter = "tu_usuario"
-    email = "tu@email.com"
+    instagram = "io.geek"
+    twitter = "io.geek"
+    email = "edaniel15@gmail.com"
 
   [params.sobre_mi]
       nombre = "Edgar"

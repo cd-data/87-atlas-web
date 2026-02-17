@@ -1,7 +1,11 @@
 {{ $link := printf "/series/%s" (.Nombre | urlize) }}
 <article class="ficha">
     <section class="ficha-serie">
-        <img src="{{ .Imagen }}" alt="{{ .Nombre | humanize }}" class="hero-background-img">
+
+        {{ $resource := resources.Get .Imagen }}
+        {{ $optimized := $resource.Fill "600x400 Center webp q75" }}
+        
+        <img src="{{ $optimized.RelPermalink }}" alt="{{ .Nombre | humanize }}" class="hero-background-img">
 
         <div class="ficha-serie-overlay"></div>
 
