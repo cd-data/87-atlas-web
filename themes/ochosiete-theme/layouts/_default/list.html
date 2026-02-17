@@ -31,7 +31,11 @@
                 {{ range .Sections }}
                     <a href="{{ .Permalink }}" class="card-agrupador" style="text-decoration: none; display: block; position: relative; aspect-ratio: 16/9; border-radius: 8px; overflow: hidden; background: var(--color-fondo-oscuro);">
                         {{ if .Params.image }}
-                            <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.6;">
+
+                            {{ $resource := resources.Get .Params.image }}
+                            {{ $optimized := $resource.Fill "600x400 Center webp q75" }}
+
+                            <img src="{{ $optimized.RelPermalink | relURL }}" alt="{{ .Title }}" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.6;">
                         {{ end }}
                         <div style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);">
                             <h3 style="color: white; margin: 0; font-size: 1.5rem;">{{ .Title }}</h3>

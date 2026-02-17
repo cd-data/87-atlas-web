@@ -1,4 +1,4 @@
 ---
 title: "Agenda"
-image: "/images/soldados-falda/portada-1.png"
+image: "/images/abs1.jpg"
 ---
