@@ -1,0 +1,89 @@
+{{ define "main" }}
+
+{{/* 1. Definimos el paginador SOLO para artículos (RegularPages), no para carpetas */}}
+{{ $paginador := .Paginate .RegularPages }}
+
+<article class="articulo-single">
+    <div class="container-lectura">
+        {{ partial "breadcrumb.html" . }}
+
+        <header class="articulo-header">
+            <h1>{{ .Title }}</h1>
+            
+            {{ if .Description }}
+            <p style="color: var(--color-texto-secundario); line-height: 1.6;">
+                {{ .Description }}
+            </p>
+            {{ end }}
+            
+            <div style="margin-top: 1.5rem; font-family: var(--fuente-mono); color: var(--color-texto-secundario);">
+                {{ $total := (add (len .Sections) (len .RegularPages)) }}
+                {{ $total }} {{ if eq $total 1 }}Sección/Entrada{{ else }}Secciones/Entradas{{ end }}
+            </div>
+        </header>
+        
+        {{/* --- BLOQUE A: AGRUPADORES (Sub-secciones como Narrativa, Tecnología) --- */}}
+        {{ if .Sections }}
+            <h2 style="font-family: var(--fuente-mono); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 2rem; color: var(--color-acento);">
+                Sub-Categorías
+            </h2>
+            <section class="agrupadores-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 5rem;">
+                {{ range .Sections }}
+                    <a href="{{ .Permalink }}" class="card-agrupador" style="text-decoration: none; display: block; position: relative; aspect-ratio: 16/9; border-radius: 8px; overflow: hidden; background: var(--color-fondo-oscuro);">
+                        {{ if .Params.image }}
+                            <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.6;">
+                        {{ end }}
+                        <div style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);">
+                            <h3 style="color: white; margin: 0; font-size: 1.5rem;">{{ .Title }}</h3>
+                            <p style="color: rgba(255,255,255,0.8); font-size: 0.8rem; margin: 0.5rem 0 0;">{{ len .Pages }} artículos →</p>
+                        </div>
+                    </a>
+                {{ end }}
+            </section>
+        {{ end }}
+
+
+        {{/* --- BLOQUE B: ARTÍCULOS (Entradas individuales) --- */}}
+        {{ if gt (len $paginador.Pages) 0 }}
+            {{ if .Sections }}
+                <h2 style="font-family: var(--fuente-mono); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 2rem; color: var(--color-acento);">
+                    Entradas en {{ .Title }}
+                </h2>
+            {{ end }}
+
+            <section class="archivo-grid">
+                {{ range $paginador.Pages.ByDate.Reverse }}
+                    {{ partial "list_card.html" . }}
+                {{ end }}
+            </section>
+
+        {{ else if not .Sections }}
+            {{/* Solo mostramos el "No hay contenido" si no hay ni artículos NI carpetas */}}
+            <div style="text-align: center; padding: 4rem 0;">
+                <p style="font-size: 1.125rem; color: var(--color-texto-secundario);">
+                    Aún no hay contenido en la sección <strong>{{ .Title }}</strong>.
+                </p>
+            </div>
+        {{ end }}
+
+        {{/* 4. Paginación */}}
+        {{ if gt $paginador.TotalPages 1 }}
+            <nav style="margin-top: 4rem; text-align: center;">
+                <div style="display: inline-flex; gap: 0.5rem; font-family: var(--fuente-mono);">
+                    {{ if $paginador.HasPrev }}
+                        <a href="{{ $paginador.Prev.URL }}" style="padding: 0.75rem 1.5rem; border: 1px solid var(--color-borde); background: var(--color-papel); border-radius: 4px;">← Anterior</a>
+                    {{ end }}
+                    
+                    <span style="padding: 0.75rem 1.5rem; border: 1px solid var(--color-acento); background: var(--color-acento); color: white; border-radius: 4px;">
+                        {{ $paginador.PageNumber }} / {{ $paginador.TotalPages }}
+                    </span>
+                    
+                    {{ if $paginador.HasNext }}
+                        <a href="{{ $paginador.Next.URL }}" style="padding: 0.75rem 1.5rem; border: 1px solid var(--color-borde); background: var(--color-papel); border-radius: 4px;">Siguiente →</a>
+                    {{ end }}
+                </div>
+            </nav>
+        {{ end }}
+    </div>
+</article>
+{{ end }}

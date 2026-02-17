@@ -1,0 +1,16 @@
+{{/*
+  Shortcode: imagen
+  Uso dentro de galeria: {{< imagen src="/img.jpg" caption="Descripción" >}}
+*/}}
+
+{{ $src := .Get "src" }}
+{{ $caption := .Get "caption" }}
+
+<figure style="margin: 0;">
+  <img src="{{ $src }}" alt="{{ $caption }}" style="width: 100%; height: 240px; object-fit: cover; border: 2px solid var(--color-borde); filter: grayscale(10%) contrast(1.05); transition: filter 0.3s;">
+  {{ if $caption }}
+  <figcaption style="margin-top: 0.75rem; font-size: 0.875rem; color: var(--color-texto-secundario); font-family: var(--fuente-mono); line-height: 1.4;">
+    {{ $caption }}
+  </figcaption>
+  {{ end }}
+</figure>

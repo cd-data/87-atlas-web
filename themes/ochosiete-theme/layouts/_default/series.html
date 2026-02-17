@@ -1,0 +1,125 @@
+{{ define "main" }}
+<div class="container-lectura">
+    <header class="text-center" style="margin-bottom: 5rem; margin-top: 3rem;">
+        <h1 style="font-size: 3.5rem; letter-spacing: -2px;">Biblioteca de Series</h1>
+        <p style="color: var(--color-texto-secundario); font-size: 1.2rem; max-width: 600px; margin: 0 auto;">
+            Contenido estructurado por capítulos. Desde análisis técnicos hasta narrativas literarias.
+        </p>
+    </header>
+
+    <div class="series-catalog">
+        {{ range $name, $taxonomy := .Site.Taxonomies.series }}
+            {{/* Obtenemos el post con weight 1 o el más antiguo para la portada */}}
+            {{ $primerCapitulo := index $taxonomy.Pages.ByWeight 0 }}
+            {{ $link := printf "/series/%s" ($name | urlize) }}
+            
+            <article class="serie-landing-card">
+                <div class="serie-card-visual">
+                    {{ if $primerCapitulo.Params.image }}
+                        <img src="{{ $primerCapitulo.Params.image | relURL }}" alt="{{ $name }}">
+                    {{ else }}
+                        <div class="serie-placeholder">87</div>
+                    {{ end }}
+                    <span class="serie-badge">{{ len $taxonomy.Pages }} Capítulos</span>
+                </div>
+
+                <div class="serie-card-content">
+                    <h2 class="serie-titulo">
+                        <a href="{{ $link }}">{{ $name | humanize }}</a>
+                    </h2>
+                    
+                    <p class="serie-descripcion">
+                        {{ if $primerCapitulo.Description }}
+                            {{ $primerCapitulo.Description }}
+                        {{ else }}
+                            Explora esta serie de {{ len $taxonomy.Pages }} entregas sobre {{ $name | humanize }}.
+                        {{ end }}
+                    </p>
+
+                    <div class="serie-footer">
+                        <a href="{{ $link }}" class="btn-continuar">Explorar Serie →</a>
+                    </div>
+                </div>
+            </article>
+        {{ end }}
+    </div>
+</div>
+
+<style>
+    .series-catalog {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        margin-bottom: 6rem;
+    }
+
+    .serie-landing-card {
+        display: grid;
+        grid-template-columns: 350px 1fr;
+        gap: 2rem;
+        background: var(--color-papel);
+        border: 1px solid var(--color-borde);
+        border-radius: 12px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+    }
+
+    .serie-landing-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--color-acento);
+    }
+
+    .serie-card-visual {
+        position: relative;
+        height: 100%;
+    }
+
+    .serie-card-visual img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .serie-badge {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        background: var(--color-acento);
+        color: white;
+        padding: 0.4rem 0.8rem;
+        font-family: var(--fuente-mono);
+        font-size: 0.7rem;
+        border-radius: 4px;
+        text-transform: uppercase;
+    }
+
+    .serie-card-content {
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .serie-titulo { margin: 0 0 1rem; font-size: 2rem; }
+    .serie-titulo a { text-decoration: none; color: var(--color-texto); }
+    
+    .serie-descripcion {
+        color: var(--color-texto-secundario);
+        line-height: 1.6;
+        margin-bottom: 2rem;
+    }
+
+    .btn-continuar {
+        font-family: var(--fuente-mono);
+        text-decoration: none;
+        color: var(--color-acento);
+        font-weight: bold;
+        font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+        .serie-landing-card { grid-template-columns: 1fr; }
+        .serie-card-visual { height: 200px; }
+    }
+</style>
+{{ end }}

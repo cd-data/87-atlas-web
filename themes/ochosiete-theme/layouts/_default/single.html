@@ -1,0 +1,126 @@
+{{ define "main" }}
+<article class="articulo-single">
+
+    <div class="container-lectura">
+        {{ partial "breadcrumb.html" . }}
+
+        <!-- Header del Artículo -->
+        <header class="articulo-header">
+
+            <!-- Título -->
+            <h1 class="articulo-titulo">
+                {{ if .Params.weight }}
+                    CAPITULO {{ .Params.weight }}: 
+                {{ end }}
+                {{ .Title }}
+            </h1>
+
+            <!-- Descripción / Subtítulo -->
+            {{ if .Description }}
+            <p class="articulo-descripcion">
+                {{ .Description }}
+            </p>
+            {{ end }}
+
+            <!-- Meta Info -->
+            <div class="articulo-meta">
+                <time datetime="{{ .Date.Format " 2006-01-02" }}">
+                    {{ .Date.Format "02 • 01 • 2006" }}
+                </time>
+                <span>{{ .ReadingTime }} min</span>
+                {{ with .Params.autor }}
+                <span>Por: @{{ . }}</span>
+                {{ end }}
+            </div>
+        </header>
+
+        <!-- Imagen Principal -->
+        {{ if .Params.image }}
+        {{/* 1. Buscamos la imagen en la carpeta /assets/ */}}
+        {{ $resource := resources.Get .Params.image }}
+        {{ $optimized := $resource.Fill "1100x500 Center webp q80" }}
+        <figure class="articulo-imagen-principal">
+            <img src="{{ $optimized.RelPermalink }}" alt="{{ .Title }}">
+            {{ if .Params.image_caption }}
+            <figcaption class="articulo-imagen-caption">
+                {{ .Params.image_caption }}
+            </figcaption>
+            {{ end }}
+        </figure>
+        {{ end }}
+
+        <!-- Contenido -->
+        <div class="articulo-contenido">
+            {{ .Content }}
+        </div>
+
+        <!-- Tags -->
+        {{ if .Params.tags }}
+        <div class="articulo-tags">
+            <div class="articulo-tags-label">
+                Etiquetas:
+            </div>
+            <div class="articulo-tags-lista">
+                {{ range .Params.tags }}
+                <a href="{{ " /tags/" | relLangURL }}{{ . | urlize }}" class="tag-item">
+                    #{{ . }}
+                </a>
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+
+        <!-- Serie (si pertenece a una) -->
+        {{ if .Params.series }}
+        <div class="articulo-serie">
+            <div class="articulo-serie-titulo">
+                Colección: {{ index .Params.series 0 }}
+            </div>
+            {{ $serie := index .Params.series 0 }}
+            {{ $current := . }}
+            <ul class="articulo-serie-lista">
+                {{ range where .Site.RegularPages "Params.series" "intersect" .Params.series }}
+                <li class="articulo-serie-item">
+                    {{ if eq .Permalink $current.Permalink }}
+                    <span class="serie-item-actual">→ Cap. {{ .Params.weight }}: {{ .Title }} (estás aquí)</span>
+                    {{ else }}
+                    <a href="{{ .Permalink }}" class="serie-item-link">Cap. {{ .Params.weight }}: {{ .Title }}</a>
+                    {{ end }}
+                </li>
+                {{ end }}
+            </ul>
+        </div>
+        {{ else }}
+
+            <!-- Navegación Anterior/Siguiente -->
+            <nav class="articulo-navegacion">
+                {{ with .PrevInSection }}
+                <a href="{{ .Permalink }}" class="nav-item nav-item-prev">
+                    <div class="nav-item-label">
+                        ← Anterior
+                    </div>
+                    <div class="nav-item-titulo">
+                        {{ .Title }}
+                    </div>
+                </a>
+                {{ end }}
+
+                {{ with .NextInSection }}
+                <a href="{{ .Permalink }}" class="nav-item nav-item-next">
+                    <div class="nav-item-label">
+                        Siguiente →
+                    </div>
+                    <div class="nav-item-titulo">
+                        {{ .Title }}
+                    </div>
+                </a>
+                {{ end }}
+            </nav>
+
+
+        {{ end }}
+
+    </div>
+</article>
+
+{{ end }}

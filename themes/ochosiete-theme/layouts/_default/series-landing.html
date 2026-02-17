@@ -1,0 +1,30 @@
+{{ define "main" }}
+<div class="container-lectura">
+
+    {{ partial "breadcrumb.html" . }}
+
+        <h1>Colecciones</h1>
+
+    <section class="archivo-grid">
+        {{/* 1. Obtenemos todas las series */}}
+        {{ $series := .Site.Taxonomies.series }}
+        
+        {{/* 2. Creamos una lista para ordenarlas por fecha */}}
+        {{ $seriesOrdenadas := slice }}
+        {{ range $name, $taxonomy := $series }}
+            {{/* Tomamos el post más reciente de cada serie */}}
+            {{ $postMasReciente := index $taxonomy.Pages.ByDate.Reverse 0 }}
+            {{ $seriesOrdenadas = $seriesOrdenadas | append (dict "Nombre" $name "Taxonomia" $taxonomy "Fecha" $postMasReciente.Date "Imagen" $postMasReciente.Params.image) }}
+        {{ end }}
+
+        {{/* 3. Mostramos las primeras 3 ordenadas por fecha reciente */}}
+        {{ range first 3 (sort $seriesOrdenadas "Fecha" "desc") }}
+            {{ $link := printf "/series/%s" (.Nombre | urlize) }}
+            
+            <article class="tarjeta-serie-mini">
+                {{ partial "serie_card.html" . }}
+            </article>
+        {{ end }}
+    </section>
+</div>
+{{ end }}

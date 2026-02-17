@@ -1,0 +1,20 @@
+{{ $resource := resources.Get .Params.image }}
+{{ $optimized := $resource.Fill "600x400 Center webp q75" }}
+<section class="hero-netflix">
+    <img src="{{ $optimized.RelPermalink }}" alt="{{ .Title }}" class="hero-background-img">
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-container">
+        <div class="hero-content">
+            <span class="badge-novedad">
+                {{ .Params.format | upper }}
+            </span>
+            <h1 class="hero-titulo">{{ .Title }}</h1>
+            <p class="hero-descripcion">{{ .Description | default .Summary | truncate 100 }}</p>
+            <div class="hero-buttons">
+                <a href="{{ .Permalink }}" class="btn-accent">LEER AHORA</a>
+            </div>
+        </div>
+    </div>
+</section>

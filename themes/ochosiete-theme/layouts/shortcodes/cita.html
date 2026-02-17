@@ -1,0 +1,18 @@
+{{/*
+  Shortcode: cita
+  Uso: {{< cita autor="Nombre" >}}Texto de la cita{{< /cita >}}
+*/}}
+
+{{ $autor := .Get "autor" }}
+
+<blockquote style="margin: 3rem 0; padding: 2rem; background: var(--overlay-oscuro-suave); border-left: 6px solid var(--color-acento); position: relative; font-style: italic; font-size: 1.25rem; line-height: 1.6; color: var(--color-gris-oscuro);">
+  <div style="font-size: 4rem; position: absolute; top: -0.5rem; left: 1rem; color: var(--color-acento); opacity: 0.3; font-family: Georgia, serif; line-height: 1;">"</div>
+  <div style="position: relative; z-index: 1; color: var(--color-acento); ">
+    {{ .Inner | markdownify }}
+  </div>
+  {{ if $autor }}
+  <footer style="margin-top: 1rem; font-style: normal; font-family: var(--fuente-mono); font-size: 0.875rem; text-align: right; color: var(--color-texto-secundario);">
+    — {{ $autor }}
+  </footer>
+  {{ end }}
+</blockquote>

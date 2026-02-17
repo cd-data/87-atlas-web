@@ -1,0 +1,19 @@
+{{ $link := printf "/series/%s" (.Nombre | urlize) }}
+<article class="ficha">
+    <section class="ficha-serie">
+        <img src="{{ .Imagen }}" alt="{{ .Nombre | humanize }}" class="hero-background-img">
+
+        <div class="ficha-serie-overlay"></div>
+
+        <div class="ficha-serie-content">
+            <span class="badge-novedad">
+                {{ len .Taxonomia.Pages }} CAPITULOS 
+            </span>
+            <h1>{{ .Nombre | humanize }}</h1>
+            <div class="hero-buttons">
+                <a href="{{ $link }}" class="btn-accent">LEER AHORA</a>
+            </div>
+           
+        </div>
+    </section>
+</article>

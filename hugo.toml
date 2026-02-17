@@ -1,0 +1,49 @@
+baseURL = 'http://example.org/'  # Cambia a tu dominio
+languageCode = 'es-PE'  # Español Perú, basado en tu ubicación
+title = 'ATLAS'
+theme = 'ochosiete-theme'
+
+[params]
+  number = '87'
+  description = 'Sitio inspirado en Cartas del Frente Ejército Alemán - 1942'
+  
+  [params.social]
+    instagram = "tu_usuario"
+    twitter = "tu_usuario"
+    email = "tu@email.com"
+
+  [params.sobre_mi]
+      nombre = "Edgar"
+      username = "87"
+      bio = "Explorador de tecnología, amante de la historia bélica y entusiasta de la cultura geek. Bienvenido a mi bitácora personal."
+      foto = "/images/87.jpg"
+
+  [[params.redes]]
+      plataforma = "Youtube"
+      cuenta = "@tekademia"
+      descripcion = "Programación, Big Data y tecnología."
+      link = "https://youtube.com/@tekademia"
+
+  [[params.redes]]
+      plataforma = "Tiktok"
+      cuenta = "io.geek"
+      descripcion = "Cultura geek, anime y Lives."
+      link = "https://tiktok.com/@io.geek"
+
+  [[params.redes]]
+      plataforma = "Tiktok"
+      cuenta = "@lector.geek"
+      descripcion = "Historia bélica del Siglo XX y Lives."
+      link = "https://tiktok.com/@lector.geek"
+
+  [[params.redes]]
+      plataforma = "Instagram"
+      cuenta = "io.geek"
+      descripcion = "Cultura geek y anime."
+      link = "https://instagram.com/io.geek"
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+  serie = "series"
+  format   = "format"

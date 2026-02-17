@@ -1,0 +1,11 @@
+{{/*
+  Shortcode: galeria
+  Uso: {{< galeria >}}
+       {{< imagen src="/img1.jpg" caption="Descripción" >}}
+       {{< imagen src="/img2.jpg" caption="Descripción" >}}
+       {{< /galeria >}}
+*/}}
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+  {{ .Inner }}
+</div>

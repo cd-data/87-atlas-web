@@ -1,0 +1,60 @@
+baseURL = "https://ochositete.com/"
+languageCode = "es"
+title = "87 • OchoSiete"
+theme = "ochosiete-theme"
+
+[params]
+  description = "Narrativas, análisis y archivo personal de historias que importan"
+  author = "87"
+
+  # Redes sociales
+  [params.social]
+    instagram = "tu_usuario"
+    twitter = "tu_usuario"
+    youtube = "tu_canal"
+    email = "contacto@ochositete.com"
+  
+  # Newsletter
+  [params.newsletter]
+    enabled = true
+    provider = "mailchimp" # o buttondown, substack, etc
+    action_url = "https://tu-newsletter-url.com"
+
+[menu]
+
+  [[menu.main]]
+    name = "Bitácora"
+    url = "/bitacora/"
+    weight = 2
+  
+  [[menu.main]]
+    name = "Proyectos"
+    url = "/proyectos"
+    weight = 3
+  
+  [[menu.main]]
+    name = "Eventos"
+    url = "/eventos/"
+    weight = 4
+  
+  [[menu.main]]
+    name = "Sobre mí"
+    url = "/contacto/"
+    weight = 7
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+  series = "series"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    style = "monokai"
+    lineNos = true
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  section = ["HTML", "RSS"]

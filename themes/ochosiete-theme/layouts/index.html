@@ -1,0 +1,54 @@
+{{ define "main" }}
+
+{{/* 1. Obtenemos solo los artículos que tienen 'featured: true' en su Front Matter */}}
+{{ $paginas := where (where .Site.RegularPages "Params.featured" true) "Params.headline" "!=" true }}
+{{ $headline := first 1 (where .Site.RegularPages "Params.headline" true) }}
+
+<div class="container">
+
+    {{ if $headline }}
+        {{ range $headline }}
+            {{ partial "headline.html" . }}
+        {{ end }}
+    {{ end }}
+
+    <header class="text-center mt-xl">
+        <h2>&middot; DESTACADO &middot;</h2>
+    </header>
+
+    <section class="archivo-grid">
+        {{ $contador := 0 }}
+        {{ range $paginas.ByDate.Reverse }}
+        {{ $contador = add $contador 1 }}
+            {{ partial "list_card.html" . }}
+        {{ end }}
+    </section>
+
+    <header class="text-center mt-xl">
+        <h2>&middot; COLECCIONES &middot;</h2>
+    </header>
+
+    <section class="archivo-grid">
+    {{/* 1. Obtenemos todas las series */}}
+        {{ $series := .Site.Taxonomies.series }}
+        
+        {{/* 2. Creamos una lista para ordenarlas por fecha */}}
+        {{ $seriesOrdenadas := slice }}
+        {{ range $name, $taxonomy := $series }}
+            {{/* Tomamos el post más reciente de cada serie */}}
+            {{ $postMasReciente := index $taxonomy.Pages.ByDate.Reverse 0 }}
+            {{ $seriesOrdenadas = $seriesOrdenadas | append (dict "Nombre" $name "Taxonomia" $taxonomy "Fecha" $postMasReciente.Date "Imagen" $postMasReciente.Params.image) }}
+        {{ end }}
+
+        {{/* 3. Mostramos las primeras 3 ordenadas por fecha reciente */}}
+        {{ range first 3 (sort $seriesOrdenadas "Fecha" "desc") }}
+            {{ $link := printf "/series/%s" (.Nombre | urlize) }}
+            
+            <article class="tarjeta-serie-mini">
+                {{ partial "serie_card.html" . }}
+            </article>
+        {{ end }}
+    </section>
+</div>
+
+{{ end }}

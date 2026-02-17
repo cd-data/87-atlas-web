@@ -1,0 +1,20 @@
+<section class="fuentes-container">
+    <ul class="fuentes-lista">
+        {{ $data := .Get 0 | transform.Unmarshal }}
+        {{ range $data }}
+        <li class="fuente-item">
+            <span class="fuente-tipo {{ .tipo | urlize }}">{{ .tipo }}</span>
+            <div class="fuente-cuerpo">
+                <span class="fuente-autor">{{ .autor }}.</span>
+                <span class="fuente-obra">"{{ .titulo }}"</span>
+                {{ with .editorial }}<span class="fuente-editorial">({{ . }}).</span>{{ end }}
+                {{ if .url }}
+                    <a href="{{ .url }}" class="fuente-link" target="_blank" rel="noopener">
+                        Ver archivo <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </a>
+                {{ end }}
+            </div>
+        </li>
+        {{ end }}
+    </ul>
+</section>

@@ -1,0 +1,46 @@
+{{/* Generamos un ID único basado en el orden del shortcode en la página si no se provee uno */}}
+{{ $id := .Get "id" | default (printf "chart-%d" .Ordinal) }}
+
+<div class="chart-wrapper">
+    <canvas id="{{ $id }}"></canvas>
+</div>
+
+<script>
+    {{/* Usamos un IIFE para no contaminar el scope global y permitir múltiples gráficas */}}
+    (function() {
+        const initChart = () => {
+            const el = document.getElementById('{{ $id }}');
+            if (!el) return;
+
+            const ctx = el.getContext('2d');
+            const data = {{ .Get "data" | safeJS }};
+            const options = {{ .Get "options" | default "{}" | safeJS }};
+
+            new Chart(ctx, {
+                type: '{{ .Get "type" | default "bar" }}',
+                data: data,
+                options: Object.assign({
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { 
+                            display: true,
+                            labels: { color: '#888', font: { family: 'monospace', size: 11 } } 
+                        }
+                    },
+                    scales: {
+                        y: { grid: { color: 'rgba(128, 128, 128, 0.1)' }, ticks: { color: '#888' } },
+                        x: { grid: { display: false }, ticks: { color: '#888' } }
+                    }
+                }, options)
+            });
+        };
+
+        {{/* Verificamos si Chart.js ya cargó, si no, esperamos al evento */}}
+        if (typeof Chart !== 'undefined') {
+            initChart();
+        } else {
+            window.addEventListener('load', initChart);
+        }
+    })();
+</script>

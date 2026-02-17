@@ -1,0 +1,28 @@
+{{/* 
+  Shortcode: infobox
+  Uso: {{< infobox tipo="info" titulo="Título" >}}Contenido{{< /infobox >}}
+  Tipos: info, warning, danger, success
+*/}}
+
+{{ $tipo := .Get "tipo" | default "info" }}
+{{ $titulo := .Get "titulo" }}
+
+{{ $color := "#2E5266" }}
+{{ if eq $tipo "warning" }}
+  {{ $color = "#D35400" }}
+{{ else if eq $tipo "danger" }}
+  {{ $color = "#C41E3A" }}
+{{ else if eq $tipo "success" }}
+  {{ $color = "#27AE60" }}
+{{ end }}
+
+<div style="margin: 2rem 0; padding: 1.5rem; background: var(--color-gris-fondo); border-left: 4px solid {{ $color }}; border-radius: 4px;">
+  {{ if $titulo }}
+  <div style="font-family: var(--fuente-mono); font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; color: {{ $color }};">
+    {{ $titulo }}
+  </div>
+  {{ end }}
+  <div style="color: var(--color-texto); line-height: 1.6;">
+    {{ .Inner | markdownify }}
+  </div>
+</div>

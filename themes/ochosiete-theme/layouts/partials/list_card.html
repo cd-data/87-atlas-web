@@ -1,0 +1,61 @@
+<article class="ficha">
+    
+    {{ with .Params.weight }}
+        <div class="ficha-numero color-accent border-color-accent">CAP. {{ . }}</div>
+    {{ end }}
+
+    <a href="{{ .Permalink }}">
+        {{ if .Params.image }}
+            {{/* 1. Buscamos la imagen en la carpeta /assets/ */}}
+            {{ $resource := resources.Get .Params.image }}
+            
+            {{ if $resource }}
+                {{/* 2. Procesamos: Recortar a 600x400, calidad 75%, formato WebP */}}
+                {{ $optimized := $resource.Fill "600x400 Center webp q75" }}
+                <img src="{{ $optimized.RelPermalink }}" 
+                     alt="{{ .Title }}" 
+                     class="ficha-imagen"
+                     width="600" height="400">
+            {{ else }}
+                {{/* Si no encuentra la imagen en /assets, intenta usar la URL original (caída segura) */}}
+                <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" class="ficha-imagen">
+            {{ end }}
+        {{ else }}
+            <div class="ficha-imagen"
+                style="background: linear-gradient(45deg, var(--color-borde), transparent); display: flex; align-items: center; justify-content: center;">
+                <span style="font-size: 2rem; opacity: 0.2;">87</span>
+            </div>
+        {{ end }}
+    </a>
+
+    <div class="ficha-contenido">
+        {{ with .Params.categories }}
+            {{ range . }}
+                <span class="ficha-categoria {{ . | urlize }}">{{ . }}</span>
+            {{ end }}
+        {{ end }}
+
+        <h2 class="ficha-titulo">
+            <a href="{{ .Permalink }}" style="color: var(--color-texto);">
+                {{ .Title }}
+            </a>
+        </h2>
+
+        {{ if .Description }}
+            <p class="ficha-extracto">{{ .Description }}</p>
+        {{ else if .Summary }}
+            <p class="ficha-extracto">{{ .Summary | truncate 120 }}</p>
+        {{ end }}
+
+        {{ if not .Date.IsZero }}
+            <div class="ficha-meta">
+                <time datetime="{{ .Date.Format "2006-01-02" }}">
+                    {{ .Date.Format "02.01.2006" }}
+                </time>
+                <span>
+                    {{ .ReadingTime }} min
+                </span>
+            </div>
+        {{ end }}
+    </div>
+</article>

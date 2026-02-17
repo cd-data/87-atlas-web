@@ -1,0 +1,16 @@
+<nav aria-label="breadcrumb" class="breadcrumb-container">
+    <ol>
+        {{ range .Ancestors.Reverse }}
+            <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+        {{ end }}
+
+        {{ with .Params.format }}
+            <li><a href="/format/{{ . | urlize }}">{{ . }}</a></li>
+        {{ end }}
+
+        {{ with .Params.series }}
+            <li>Serie: <a href="/series/{{ index . 0 | urlize }}">{{ index . 0 }}</a></li>
+        {{ end }}
+
+    </ol>
+</nav>
