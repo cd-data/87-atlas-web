@@ -161,18 +161,34 @@ El algoritmo del hambre no fue escrito en código.
 Fue escrito en decisiones.
 Y cuando el sistema dejó de poder corregirse, el colapso fue inevitable.
 
-# Fuentes
-
-Beevor, A. (1998). *Stalingrad: The fateful siege, 1942–1943*. Viking Press.  
-https://www.penguinrandomhouse.com/books/73514/stalingrad-by-antony-beevor/
-
-Glantz, D. M., & House, J. M. (1995). *When titans clashed: How the Red Army stopped Hitler*. University Press of Kansas.  
-https://kansaspress.ku.edu/9780700607172/
-
-Ziemke, E. F. (1968). *Stalingrad to Berlin: The German defeat in the East*. U.S. Army Center of Military History.  
-https://history.army.mil/html/books/030/30-5/
-
-Overy, R. (1997). *Russia’s war: A history of the Soviet effort, 1941–1945*. Penguin Books.  
-https://www.penguinrandomhouse.com/books/160866/russias-war-by-richard-overy/
-
-Craig, W. (1973). *Enemy at the gates: The battle for Stalingrad*. Reader’s Digest Press.
+{{< referencias `
+- tipo: "Libro"
+  autor: "Beevor, A."
+  titulo: "Stalingrad: The fateful siege, 1942–1943"
+  fuente: "Viking Press"
+  fecha: "1998"
+  url: "https://www.penguinrandomhouse.com/books/73514/stalingrad-by-antony-beevor/"
+- tipo: "Libro"
+  autor: "Glantz, D. M., & House, J. M."
+  titulo: "When titans clashed: How the Red Army stopped Hitler"
+  fuente: "University Press of Kansas"
+  fecha: "1995"
+  url: "https://kansaspress.ku.edu/9780700607172/"
+- tipo: "Documento"
+  autor: "Ziemke, E. F."
+  titulo: "Stalingrad to Berlin: The German defeat in the East"
+  fuente: "U.S. Army Center of Military History"
+  fecha: "1968"
+  url: "https://history.army.mil/html/books/030/30-5/"
+- tipo: "Libro"
+  autor: "Overy, R."
+  titulo: "Russia’s war: A history of the Soviet effort, 1941–1945"
+  fuente: "Penguin Books"
+  fecha: "1997"
+  url: "https://www.penguinrandomhouse.com/books/160866/russias-war-by-richard-overy/"
+- tipo: "Libro"
+  autor: "Craig, W."
+  titulo: "Enemy at the gates: The battle for Stalingrad"
+  fuente: "Reader’s Digest Press"
+  fecha: "1973"
+` >}}

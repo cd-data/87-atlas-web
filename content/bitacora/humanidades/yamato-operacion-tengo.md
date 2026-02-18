@@ -192,9 +192,25 @@ Murieron dentro de una estructura que ya no podía salvarlos.
 
 Eso es lo verdaderamente trágico.
 
-# Fuentes
-
-- Dull, P. S. (1978). *A Battle History of the Imperial Japanese Navy (1941–1945)*. Naval Institute Press.  
-- Garzke, W. H., & Dulin, R. O. (1985). *Battleships: Axis and Neutral Battleships in World War II*. Naval Institute Press.  
-- Hara, T. (1961). *Japanese Destroyer Captain*. Naval Institute Press.  
-- Morison, S. E. (1960). *History of United States Naval Operations in World War II, Vol. XIV: Victory in the Pacific*. Little, Brown and Company.  
+{{< referencias `
+- tipo: "Libro"
+  autor: "Dull, P. S."
+  titulo: "A Battle History of the Imperial Japanese Navy (1941–1945)"
+  fuente: "Naval Institute Press"
+  fecha: "1978"
+- tipo: "Libro"
+  autor: "Garzke, W. H., & Dulin, R. O."
+  titulo: "Battleships: Axis and Neutral Battleships in World War II"
+  fuente: "Naval Institute Press"
+  fecha: "1985"
+- tipo: "Libro"
+  autor: "Hara, T."
+  titulo: "Japanese Destroyer Captain"
+  fuente: "Naval Institute Press"
+  fecha: "1961"
+- tipo: "Libro"
+  autor: "Morison, S. E."
+  titulo: "History of United States Naval Operations in World War II, Vol. XIV: Victory in the Pacific"
+  fuente: "Little, Brown and Company"
+  fecha: "1960"
+` >}}

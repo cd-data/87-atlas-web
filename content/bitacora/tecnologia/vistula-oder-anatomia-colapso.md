@@ -10,6 +10,7 @@ image: "/images/urss/red_army.jpeg"
 image_caption: "(Recreacción con IA) Marcha del Ejercito Rojo por el Invierno"
 format: "investigacion"
 featured: true
+headline: true
 categories: ["Historia"]
 tags: ["armas", "tecnología militar", "historia bélica", "siglo xx"]
 ---
@@ -198,31 +199,58 @@ Sino:
 
 Porque los colapsos militares, como los tecnológicos o empresariales, rara vez ocurren por un único golpe brillante. Ocurren cuando el sistema deja de poder adaptarse. Y en enero de 1945, el sistema alemán ya no podía.
 
-## Fuentes 
-
-Beevor, A. (2002). *Berlin: The downfall 1945*. Viking Press.  
-https://www.penguinrandomhouse.com/books/122798/berlin-the-downfall-1945-by-antony-beevor/
-
-Citino, R. M. (2007). *The Wehrmacht retreats: Fighting a lost war, 1943*. University Press of Kansas.  
-https://kansaspress.ku.edu/9780700618079/
-
-Glantz, D. M., & House, J. M. (1995). *When titans clashed: How the Red Army stopped Hitler*. University Press of Kansas.  
-https://kansaspress.ku.edu/9780700607172/
-
-Glantz, D. M. (2015). *The Soviet–German war 1941–1945: Myths and realities*. Glantz Books.  
-
-Müller, R.-D., & Ueberschär, G. R. (Eds.). (2002). *Hitler’s war in the East, 1941–1945: A critical assessment*. Berghahn Books.  
-https://www.berghahnbooks.com/title/MullerHitlers
-
-Stahel, D. (2019). *Retreat from Moscow: A new history of Germany’s winter campaign, 1941–1942*. Farrar, Straus and Giroux.  
-(Importante para comprender la erosión estructural previa del sistema alemán.)  
-https://us.macmillan.com/books/9780374249524
-
-Ziemke, E. F. (1968). *Stalingrad to Berlin: The German defeat in the East*. U.S. Army Center of Military History.  
-https://history.army.mil/html/books/030/30-5/
-
-U.S. Army Center of Military History. (1993). *The Soviet Army’s offensive operations, 1944–1945*.  
-https://history.army.mil/
-
-Overy, R. (1995). *Why the Allies won*. W. W. Norton & Company.  
-https://wwnorton.com/books/9780393316191
+{{< referencias `
+- tipo: "Libro"
+  autor: "Beevor, A."
+  titulo: "Berlin: The downfall 1945"
+  fuente: "Viking Press"
+  fecha: "2002"
+  url: "https://www.penguinrandomhouse.com/books/122798/berlin-the-downfall-1945-by-antony-beevor/"
+- tipo: "Libro"
+  autor: "Citino, R. M."
+  titulo: "The Wehrmacht retreats: Fighting a lost war, 1943"
+  fuente: "University Press of Kansas"
+  fecha: "2007"
+  url: "https://kansaspress.ku.edu/9780700618079/"
+- tipo: "Libro"
+  autor: "Glantz, D. M., & House, J. M."
+  titulo: "When titans clashed: How the Red Army stopped Hitler"
+  fuente: "University Press of Kansas"
+  fecha: "1995"
+  url: "https://kansaspress.ku.edu/9780700607172/"
+- tipo: "Libro"
+  autor: "Glantz, D. M."
+  titulo: "The Soviet–German war 1941–1945: Myths and realities"
+  fuente: "Glantz Books"
+  fecha: "2015"
+- tipo: "Libro"
+  autor: "Müller, R.-D., & Ueberschär, G. R. (Eds.)"
+  titulo: "Hitler’s war in the East, 1941–1945: A critical assessment"
+  fuente: "Berghahn Books"
+  fecha: "2002"
+  url: "https://www.berghahnbooks.com/title/MullerHitlers"
+- tipo: "Libro"
+  autor: "Stahel, D."
+  titulo: "Retreat from Moscow: A new history of Germany’s winter campaign, 1941–1942"
+  fuente: "Farrar, Straus and Giroux"
+  fecha: "2019"
+  url: "https://us.macmillan.com/books/9780374249524"
+  nota: "Importante para comprender la erosión estructural previa del sistema alemán."
+- tipo: "Documento"
+  autor: "Ziemke, E. F."
+  titulo: "Stalingrad to Berlin: The German defeat in the East"
+  fuente: "U.S. Army Center of Military History"
+  fecha: "1968"
+  url: "https://history.army.mil/html/books/030/30-5/"
+- tipo: "Documento"
+  autor: "U.S. Army Center of Military History"
+  titulo: "The Soviet Army’s offensive operations, 1944–1945"
+  fecha: "1993"
+  url: "https://history.army.mil/"
+- tipo: "Libro"
+  autor: "Overy, R."
+  titulo: "Why the Allies won"
+  fuente: "W. W. Norton & Company"
+  fecha: "1995"
+  url: "https://wwnorton.com/books/9780393316191"
+` >}}

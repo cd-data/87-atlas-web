@@ -10,7 +10,7 @@ image: "/images/yamato/1.png"
 image_caption: "(Recreacción con IA) Se llamaba Yamato. Y era una revolución. Pero una revolución fuera de tiempo."
 format: "investigacion"
 featured: true
-headline: true
+headline: false
 categories: ["Historia"]
 tags: ["armas", "tecnología militar", "historia bélica", "siglo xx"]
 ---
@@ -184,19 +184,34 @@ Hay que ser compatible con el futuro inmediato.
 El Yamato fue el mejor acorazado jamás construido.
 Y el último en el que realmente se creyó.
 
-## Fuentes
-
-Skulski, J. (1988). *The battleship Yamato*. Naval Institute Press.  
-https://www.usni.org/press/books/battleship-yamato
-
-Garzke, W. H., Jr., & Dulin, R. O., Jr. (1985). *Battleships: Axis and neutral battleships in World War II*. Naval Institute Press.  
-https://www.usni.org/press/books/battleships-axis-and-neutral-battleships-world-war-ii
-
-Parshall, J., & Tully, A. (2005). *Shattered sword: The untold story of the Battle of Midway*. Potomac Books.  
-https://www.penguinrandomhouse.com/books/306859/shattered-sword-by-jonathan-parshall-and-anthony-tully/
-
-Naval History and Heritage Command. (n.d.). *Operation Ten-Go*. U.S. Department of the Navy.  
-https://www.history.navy.mil/
-
-CombinedFleet.com. (n.d.). *IJN Yamato: Tabular record of movement*.  
-http://www.combinedfleet.com/yamato.htm
+{{< referencias `
+- tipo: "Libro"
+  autor: "Skulski, J."
+  titulo: "The battleship Yamato"
+  fuente: "Naval Institute Press"
+  fecha: "1988"
+  url: "https://www.usni.org/press/books/battleship-yamato"
+- tipo: "Libro"
+  autor: "Garzke, W. H., Jr., & Dulin, R. O., Jr."
+  titulo: "Battleships: Axis and neutral battleships in World War II"
+  fuente: "Naval Institute Press"
+  fecha: "1985"
+  url: "https://www.usni.org/press/books/battleships-axis-and-neutral-battleships-world-war-ii"
+- tipo: "Libro"
+  autor: "Parshall, J., & Tully, A."
+  titulo: "Shattered sword: The untold story of the Battle of Midway"
+  fuente: "Potomac Books"
+  fecha: "2005"
+  url: "https://www.penguinrandomhouse.com/books/306859/shattered-sword-by-jonathan-parshall-and-anthony-tully/"
+- tipo: "Documento"
+  autor: "Naval History and Heritage Command"
+  titulo: "Operation Ten-Go"
+  fuente: "U.S. Department of the Navy"
+  fecha: "n.d."
+  url: "https://www.history.navy.mil/"
+- tipo: "Informe Técnico"
+  autor: "CombinedFleet.com"
+  titulo: "IJN Yamato: Tabular record of movement"
+  fecha: "n.d."
+  url: "http://www.combinedfleet.com/yamato.htm"
+` >}}

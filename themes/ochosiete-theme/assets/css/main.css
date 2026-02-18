@@ -569,8 +569,8 @@ text-align: center;
   background: linear-gradient(
     to right,
     var(--overlay-oscuro-fuerte) 0%,
-    var(--overlay-oscuro-suave) 70%,
-    transparent 75%
+    var(--overlay-oscuro-suave) 40%,
+    transparent 85%
   );
   z-index: 3;
 }
@@ -745,6 +745,10 @@ text-align: center;
   border-left: 4px solid var(--color-acento);
   font-style: italic;
   color: var(--color-texto);
+}
+
+blockquote > p {
+  margin-bottom: 0 !important;
 }
 
 .articulo-contenido code {
@@ -1155,6 +1159,14 @@ text-align: center;
 
   .header-contenido {
     gap: var(--espacio-md);
+  }
+
+  .site-header {
+    padding: var(--espacio-xs) var(--espacio-sm) ;
+  }
+
+  .header-contenido {
+    font-size: var(--texto-xs);
   }
 
   .nav-principal {
@@ -1632,117 +1644,97 @@ text-align: center;
 
 /* fuentes */
 
-.fuentes-container {
-    margin: 4rem 0;
-    background: var(--color-pergamino);
-    border-radius: 8px;
-    border: 1px solid var(--color-borde);
-}
-
-.fuentes-titulo {
-    font-family: var(--fuente-mono);
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    color: var(--color-acento);
-    margin-bottom: 2rem;
-    letter-spacing: 1px;
-}
-
-.fuentes-lista {
-    list-style: none;
-    padding: 0;
+.referencias-box {
     margin: 0;
+    padding: 1rem;
+    border: 1px solid var(--color-borde);
+    background-color: var(--color-papel);
+    border-radius: 8px;
 }
 
-.fuente-item {
-    display: flex;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
-    align-items: flex-start;
-}
-
-.fuente-tipo {
+.referencias-header {
     font-family: var(--fuente-mono);
-    font-size: 0.65rem;
-    padding: 0.2rem 0.6rem;
-    border-radius: 3px;
-    background: var(--color-borde);
-    color: var(--color-texto-secundario);
-    text-transform: uppercase;
-    min-width: 80px;
-    text-align: center;
-}
-
-/* Colores por tipo para mayor claridad visual */
-.fuente-tipo.libro { border-left: 3px solid #4a90e2; }
-.fuente-tipo.archivo-historico { border-left: 3px solid var(--color-acento); }
-.fuente-tipo.web { border-left: 3px solid #50b948; }
-
-.fuente-cuerpo {
-    font-size: 0.95rem;
-    line-height: 1.4;
-}
-
-.fuente-autor {
-    font-weight: bold;
-    color: var(--color-texto);
-}
-
-.fuente-obra {
-    font-style: italic;
-    color: var(--color-texto);
-}
-
-.fuente-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
     font-size: 0.8rem;
     color: var(--color-acento);
-    text-decoration: none;
-    margin-left: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
 }
 
-.fuente-link:hover { text-decoration: underline; }
+.referencias-lista {
+    counter-reset: ref-counter;
+    list-style: none;
+    padding: 0;
+}
 
+.referencia-item {
+    counter-increment: ref-counter;
+    position: relative;
+    padding-left: 3rem;
+    margin-bottom: 2rem;
+}
+
+/* El número elegante */
+.referencia-item::before {
+    content: counter(ref-counter, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-family: var(--fuente-mono);
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: var(--color-acento);
+    opacity: 0.6;
+}
+
+.referencia-meta {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.referencias-box ol {
+  margin: 0;
+  padding: 0;
+}
+
+.ref-tipo {
+    font-size: 0.65rem;
+    font-family: var(--fuente-mono);
+    padding: 2px 8px;
+    background: var(--color-fondo-oscuro);
+    border: 1px solid var(--color-borde);
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.ref-fecha {
+    font-size: 0.75rem;
+    color: var(--color-texto-secundario);
+    font-family: var(--fuente-mono);
+}
+
+.ref-autor { font-weight: 700; color: var(--color-texto); }
+.ref-titulo { font-style: italic; color: var(--color-texto); }
+.ref-fuente { color: var(--color-texto-secundario); font-size: 0.9rem; }
+
+.ref-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 0.75rem;
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: var(--color-acento);
+    font-family: var(--fuente-mono);
+    transition: opacity 0.2s;
+}
+
+.ref-link:hover { opacity: 0.7; }
+
+/* Responsive */
 @media (max-width: 600px) {
-    .fuentes-container {
-        padding: 0; /* Reducimos padding lateral */
-        margin: 2rem 0;
-    }
-
-    .fuente-item {
-        flex-direction: column; /* Apilamos Tipo arriba y Cuerpo abajo */
-        gap: 0.5rem;
-        margin-bottom: 2rem;
-        padding-bottom: 1rem;
-        border-bottom: 1px dashed var(--color-borde); /* Separador visual entre fuentes */
-    }
-
-    .fuente-item:last-child {
-        border-bottom: none;
-    }
-
-    .fuente-tipo {
-        min-width: auto;
-        display: inline-block; /* Que solo ocupe lo que necesita el texto */
-        font-size: 0.6rem;
-        padding: 0.1rem 0.5rem;
-    }
-
-    .fuente-cuerpo {
-        font-size: 0.9rem;
-        padding-left: 2px; /* Un pequeño margen para alinear con el borde izquierdo */
-    }
-
-    .fuente-link {
-        display: flex; /* En móvil, que el link ocupe su propia línea para facilitar el click */
-        margin-left: 0;
-        margin-top: 0.75rem;
-        padding: 0.5rem;
-        background: var(--color-papel);
-        border-radius: 4px;
-        justify-content: center;
-        border: 1px solid var(--color-borde);
-    }
+    .referencia-item { padding-left: .5rem; }
+    .referencia-meta { flex-wrap: wrap; gap: 0.5rem; padding-left: var(--espacio-sm); }
 }

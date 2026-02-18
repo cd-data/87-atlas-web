@@ -208,22 +208,31 @@ No importa cuán brillante sea tu diseño.
 Si comprometen tu capa de comunicación, el sistema muere.
 {{</ cita >}}
 
-## Fuentes
-
-1. Blair, Clay. *Hitler’s U-Boat War* (Vol. I & II). Naval Institute Press.
-   [https://www.usni.org/press/books/hitlers-u-boat-war](https://www.usni.org/press/books/hitlers-u-boat-war)
-
-2. Dönitz, Karl. *Ten Years and Twenty Days*.
-   [https://archive.org/details/tenyearstwentyda00donirich](https://archive.org/details/tenyearstwentyda00donirich)
-
-3. Overy, Richard. *Why the Allies Won*.
-   [https://www.penguinrandomhouse.com/books/326702/why-the-allies-won-by-richard-overy/](https://www.penguinrandomhouse.com/books/326702/why-the-allies-won-by-richard-overy/)
-
-4. National WWII Museum – Battle of the Atlantic
-   [https://www.nationalww2museum.org/war/articles/battle-of-the-atlantic](https://www.nationalww2museum.org/war/articles/battle-of-the-atlantic)
-
-5. Bletchley Park Official Site
-   [https://bletchleypark.org.uk/](https://bletchleypark.org.uk/)
-
-6. UK National Archives – Enigma and Ultra
-   [https://www.nationalarchives.gov.uk/education/resources/enigma/](https://www.nationalarchives.gov.uk/education/resources/enigma/)
+{{< referencias `
+- tipo: "Libro"
+  autor: "Blair, Clay"
+  titulo: "Hitler’s U-Boat War (Vol. I & II)"
+  fuente: "Naval Institute Press"
+  url: "https://www.usni.org/press/books/hitlers-u-boat-war"
+- tipo: "Libro"
+  autor: "Dönitz, Karl"
+  titulo: "Ten Years and Twenty Days"
+  url: "https://archive.org/details/tenyearstwentyda00donirich"
+- tipo: "Libro"
+  autor: "Overy, Richard"
+  titulo: "Why the Allies Won"
+  fuente: "Penguin Random House"
+  url: "https://www.penguinrandomhouse.com/books/326702/why-the-allies-won-by-richard-overy/"
+- tipo: "Sitio Web"
+  autor: "National WWII Museum"
+  titulo: "Battle of the Atlantic"
+  url: "https://www.nationalww2museum.org/war/articles/battle-of-the-atlantic"
+- tipo: "Documento"
+  autor: "Bletchley Park"
+  titulo: "Official Site - Heritage & Research"
+  url: "https://bletchleypark.org.uk/"
+- tipo: "Documento"
+  autor: "UK National Archives"
+  titulo: "Enigma and Ultra"
+  url: "https://www.nationalarchives.gov.uk/education/resources/enigma/"
+` >}}
