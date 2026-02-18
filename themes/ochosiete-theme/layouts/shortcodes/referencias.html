@@ -1,0 +1,30 @@
+<h2>Bibliografía y Documentación</h2>
+
+<section class="referencias-box">   
+    <ol class="referencias-lista">
+        {{ $data := .Get 0 | transform.Unmarshal }}
+        {{ range $data }}
+        <li class="referencia-item">
+            <div class="referencia-wrapper">
+                <div class="referencia-meta">
+                    <span class="ref-tipo {{ .tipo | urlize }}">{{ .tipo }}</span>
+                    {{ with .fecha }}<span class="ref-fecha">{{ . }}</span>{{ end }}
+                </div>
+                
+                <div class="referencia-cuerpo">
+                    <span class="ref-autor">{{ .autor }}</span> 
+                    <span class="ref-titulo">"{{ .titulo }}"</span>.
+                    {{ with .fuente }}<span class="ref-fuente">{{ . }}</span>{{ end }}
+                </div>
+
+                {{ if .url }}
+                <a href="{{ .url }}" class="ref-link" target="_blank" rel="noopener noreferrer">
+                    <span>Acceder al recurso</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+                {{ end }}
+            </div>
+        </li>
+        {{ end }}
+    </ol>
+</section>
