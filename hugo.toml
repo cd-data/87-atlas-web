@@ -1,4 +1,4 @@
-baseURL = "https://87atlas.netlify.app"  # Cambia a tu dominio
+baseURL = "https://teklas.netlify.app"  # Cambia a tu dominio
 languageCode = 'es-PE'  # Español Perú, basado en tu ubicación
 title = 'TEKLAS'
 theme = 'ochosiete-theme'

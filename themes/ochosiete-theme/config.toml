@@ -1,4 +1,4 @@
-baseURL = "https://87atlas.netlify.app"
+baseURL = "https://teklas.netlify.app"
 languageCode = "es"
 title = "87 • OchoSiete"
 theme = "ochosiete-theme"
