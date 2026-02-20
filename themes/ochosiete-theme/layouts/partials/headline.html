@@ -1,5 +1,5 @@
 {{ $resource := resources.Get .Params.image }}
-{{ $optimized := $resource.Fill "600x400 Center webp q75" }}
+{{ $optimized := $resource.Fill "1600x1400 Center webp q85" }}
 <section class="hero-netflix">
     <img src="{{ $optimized.RelPermalink }}" alt="{{ .Title }}" class="hero-background-img">
 

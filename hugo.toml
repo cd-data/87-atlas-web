@@ -1,11 +1,11 @@
 baseURL = "https://87atlas.netlify.app"  # Cambia a tu dominio
 languageCode = 'es-PE'  # Español Perú, basado en tu ubicación
-title = 'ATLAS'
+title = 'TEKLAS'
 theme = 'ochosiete-theme'
 
 [params]
-  number = '87'
-  description = 'Sitio inspirado en Cartas del Frente Ejército Alemán - 1942'
+  number = 'DEV'
+  description = 'tecnología clara y directa'
   
   [params.social]
     instagram = "io.geek"
